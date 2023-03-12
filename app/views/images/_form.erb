@@ -10,8 +10,10 @@
   </div>
   <div class='col-md-5 cell--image--avatar' >  
     <span class='<%= "alert-danger" if image.errors.details.keys.include?(:avatar) %>'  style="display: inherit;"  >
-      <%= image.avatar.attached? && image.avatar.variable? ? image_tag(image.avatar.variant(:thumb)) : '' %><br />
-      <%= f.file_field :avatar , direct_upload: true %>
+      <div class="dropzone dropzone-default dz-clickable" data-controller="dropzone" data-dropzone-max-file-size="2" data-dropzone-max-files="1">
+        <%= image.avatar.attached? && image.avatar.variable? ? image_tag(image.avatar.variant(:thumb)) : '' %><br />
+        <%= f.file_field :avatar , direct_upload: true %>
+      </div>
       <label class='small form-text text-muted'>Avatar</label>
     </span>
     <br />
