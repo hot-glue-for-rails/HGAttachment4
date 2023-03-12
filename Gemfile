@@ -94,3 +94,6 @@ gem "image_processing", "~> 1.12"
 gem "aws-sdk-s3", "~> 1.119"
 
 gem "byebug", "~> 11.1"
+
+gem "sidekiq", "~> 7.0"
+gem "sidekiq-scheduler", "~> 5.0"
