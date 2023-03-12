@@ -86,3 +86,5 @@ gem "bullet", "~> 7.0", :groups => [:development, :test]
 gem "active_record_query_trace", "~> 1.8", :groups => [:development, :test]
 
 gem "cssbundling-rails", "~> 1.1"
+
+gem "hot-glue", "~> 0.5.8"
