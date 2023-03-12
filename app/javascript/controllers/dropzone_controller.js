@@ -6,7 +6,7 @@ export default class extends Controller {
   static targets = ["input"];
 
   connect() {
-console.log("initializing dropzone controller")
+    console.log("initializing dropzone controller")
     this.dropZone = this.createDropZone(this);
     this.hideFileInput();
     this.bindEvents();
@@ -49,7 +49,7 @@ console.log("initializing dropzone controller")
     this.dropZone.on("addedfile", file => {
       setTimeout(() => {
         if (file.accepted) {
-          const duc = new DirectUploadProcessor(this, url, file)
+          const duc = new DirectUploadProcessor(this, this.url(), file)
           duc.start();
         }
       }, 500);
@@ -67,8 +67,7 @@ console.log("initializing dropzone controller")
   }
 
   url() {
-
-    this.inputTarget.getAttribute("data-direct-upload-url");
+    return this.inputTarget.getAttribute("data-direct-upload-url");
   }
 
   createDropZone() {
@@ -150,6 +149,14 @@ class DirectUploadProcessor {
     this.xhr.upload.addEventListener("progress", event =>
       this.uploadRequestDidProgress(event)
     );
+  }
+
+  findElement(root, selector) {
+    if (typeof root == "string") {
+      selector = root;
+      root = document;
+    }
+    return root.querySelector(selector);
   }
 
   uploadRequestDidProgress(event) {
